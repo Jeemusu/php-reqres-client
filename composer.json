@@ -1,0 +1,40 @@
+{
+    "name": "jeemusu/php-reqres-client",
+    "description": "Framework-agnostic service for consuming a user api.",
+    "version": "1.0.0",
+    "type": "library",
+    "authors": [
+        {
+            "name": "James",
+            "email": "jameswmorris@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jeemusu\\ReqRes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jeemusu\\ReqRes\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.87",
+        "pestphp/pest": "^4.1",
+        "mockery/mockery": "^1.6"
+    },
+    "scripts": {
+        "test": "pest",
+        "stan": "phpstan analyse",
+        "cs-fixer": "php-cs-fixer fix"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

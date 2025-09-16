@@ -1,0 +1,10 @@
+parameters:
+  level: max
+  paths:
+    - src
+    
+  checkMissingCallableSignature: true
+  treatPhpDocTypesAsCertain: true
+
+includes:
+    - phpstan-baseline.neon
