@@ -17,6 +17,11 @@ final class UserCollection implements JsonSerializable
     ) {
     }
 
+    /**
+     * Converts a UserCollection to an array.
+     *
+     * @return array
+    */
     public function toArray(): array
     {
         return [
@@ -30,6 +35,28 @@ final class UserCollection implements JsonSerializable
         ];
     }
 
+    /**
+     * Create a UserCollection from an array.
+     *
+     * @param array $data
+     */
+    public static function fromArray(array $data): self
+    {
+        $users = array_map(
+            static fn (array $userData): User => User::fromArray($userData),
+            $data['data']
+        );
+
+        return new self(
+            page: $data['page'],
+            perPage: $data['per_page'],
+            total: $data['total'],
+            totalPages: $data['total_pages'],
+            users: $users
+        );
+    }
+
+    /** @return array */
     public function jsonSerialize(): array
     {
         return $this->toArray();

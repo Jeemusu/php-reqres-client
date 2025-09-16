@@ -17,6 +17,11 @@ final class User implements JsonSerializable
     ) {
     }
 
+    /**
+     * Converts a User to an array.
+     *
+     * @return array
+    */
     public function toArray(): array
     {
         return [
@@ -28,6 +33,24 @@ final class User implements JsonSerializable
         ];
     }
 
+    /**
+     * Create User from an array.
+     *
+     * @param array $data
+     * @return self
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            id: $data['id'],
+            email: $data['email'],
+            firstName: $data['first_name'],
+            lastName: $data['last_name'],
+            avatar: $data['avatar']
+        );
+    }
+
+    /** @return array */
     public function jsonSerialize(): array
     {
         return $this->toArray();

@@ -36,5 +36,10 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "require": {
+        "php": "^8.4",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.1"
     }
 }
