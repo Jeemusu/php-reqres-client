@@ -6,6 +6,9 @@ namespace Jeemusu\ReqRes\Interfaces\Services;
 
 use Jeemusu\ReqRes\DataTransferObjects\User;
 use Jeemusu\ReqRes\DataTransferObjects\UserCollection;
+use Jeemusu\ReqRes\Exceptions\ApiException;
+use Jeemusu\ReqRes\Exceptions\NetworkException;
+use Jeemusu\ReqRes\Exceptions\UserNotFoundException;
 
 interface UserServiceInterface
 {
@@ -13,6 +16,9 @@ interface UserServiceInterface
      * Retrieves a single user by their unique ID.
      *
      * @param int $id The unique integer ID of the user.
+     * @throws UserNotFoundException If a user with the given ID is not found.
+     * @throws NetworkException If a network error prevents the request from completing.
+     * @throws ApiException For any other API-related errors.
      * @return User The User data transfer object.
      */
     public function getUserById(int $id): User;
@@ -21,6 +27,8 @@ interface UserServiceInterface
      * Retrieves a paginated list of users.
      *
      * @param int $page The page number to retrieve.
+     * @throws NetworkException If a network error prevents the request from completing.
+     * @throws ApiException For any other API-related errors.
      * @param int $perPage The number of users per page.
      */
     public function getPaginatedUsers(int $page = 1, int $perPage = 6): UserCollection;
@@ -30,6 +38,8 @@ interface UserServiceInterface
      *
      * @param string $name The name of the user.
      * @param string $job The job title of the user.
+     * @throws NetworkException If a network error prevents the request from completing.
+     * @throws ApiException For any other API-related errors.
      * @return string The ID of the newly created user.
      */
     public function createUser(string $name, string $job): string;

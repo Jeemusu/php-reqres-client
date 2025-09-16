@@ -21,7 +21,7 @@ use Psr\Http\Message\ResponseInterface;
 final class UserService implements UserServiceInterface
 {
     /**
-     * @var array
+     * @var array<string, string|array<string>>
      */
     private array $defaultHeaders;
 
@@ -34,7 +34,7 @@ final class UserService implements UserServiceInterface
      * @param ClientInterface $httpClient PSR-18 HTTP client
      * @param RequestFactoryInterface $requestFactory PSR-17 request factory
      * @param non-empty-string $baseUri Base URI ending with or without a slash
-     * @param array $defaultHeaders An associative array of default headers to apply to every request.
+     * @param array<string, string|string[]> $defaultHeaders An associative array of default headers to apply to every request.
      */
     public function __construct(
         private ClientInterface $httpClient,
@@ -132,6 +132,7 @@ final class UserService implements UserServiceInterface
                 throw new ApiException('Invalid response structure: missing data field');
             }
 
+            /** @var array{page: int, per_page: int, total: int, total_pages: int, data: list<array{id: int, email: string, first_name: string, last_name: string, avatar: string}>} $data */
             return UserCollection::fromArray($data);
 
         } catch (NetworkExceptionInterface $e) {
@@ -224,10 +225,11 @@ final class UserService implements UserServiceInterface
      *
      * @param ResponseInterface $response The HTTP response object.
      * @throws JsonException If the JSON is malformed or decoding fails.
-     * @return array The decoded JSON data.
+     * @return array<string, mixed> The decoded JSON data.
      */
     private function parseJson(ResponseInterface $response): array
     {
+        /** @var array<string,mixed> */
         return json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
     }
 

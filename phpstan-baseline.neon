@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$data of static method Jeemusu\\ReqRes\\DataTransferObjects\\User\:\:fromArray\(\) expects array\{id\: int, email\: string, first_name\: string, last_name\: string, avatar\: string\}, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Services/UserService.php

@@ -14,7 +14,7 @@ class ApiException extends RuntimeException
      * @param int $code The exception code.
      * @param Throwable|null $previous The previous exception for chaining.
      * @param string|null $endpoint The API endpoint that was called.
-     * @param array|null $requestData The data sent with the request.
+     * @param array<string, mixed>|null $requestData The data sent with the request.
      */
     public function __construct(
         string $message = "",
@@ -39,7 +39,7 @@ class ApiException extends RuntimeException
     /**
      * Get the request data related to the exception.
      *
-     * @return array|null
+     * @return array<string, mixed>|null
      */
     public function getRequestData(): ?array
     {

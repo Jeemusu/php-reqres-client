@@ -6,6 +6,15 @@ namespace Jeemusu\ReqRes\DataTransferObjects;
 
 use JsonSerializable;
 
+/**
+ * @phpstan-type UserArray array{
+ *   id: int,
+ *   email: string,
+ *   first_name: string,
+ *   last_name: string,
+ *   avatar: string
+ * }
+ */
 final class User implements JsonSerializable
 {
     public function __construct(
@@ -20,7 +29,7 @@ final class User implements JsonSerializable
     /**
      * Converts a User to an array.
      *
-     * @return array
+     * @return UserArray
     */
     public function toArray(): array
     {
@@ -36,7 +45,7 @@ final class User implements JsonSerializable
     /**
      * Create User from an array.
      *
-     * @param array $data
+     * @param UserArray $data
      * @return self
      */
     public static function fromArray(array $data): self
@@ -50,7 +59,7 @@ final class User implements JsonSerializable
         );
     }
 
-    /** @return array */
+    /** @return array<string, mixed> */
     public function jsonSerialize(): array
     {
         return $this->toArray();

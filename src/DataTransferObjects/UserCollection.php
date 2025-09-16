@@ -6,8 +6,20 @@ namespace Jeemusu\ReqRes\DataTransferObjects;
 
 use JsonSerializable;
 
+/**
+ * @phpstan-import-type UserArray from User
+ *
+ * @phpstan-type UserCollectionArray array{
+ *     page: int,
+ *     per_page: int,
+ *     total: int,
+ *     total_pages: int,
+ *     data: list<UserArray>
+ * }
+ */
 final class UserCollection implements JsonSerializable
 {
+    /** @param list<User> $users */
     public function __construct(
         public readonly int $page,
         public readonly int $perPage,
@@ -20,7 +32,7 @@ final class UserCollection implements JsonSerializable
     /**
      * Converts a UserCollection to an array.
      *
-     * @return array
+     * @return UserCollectionArray
     */
     public function toArray(): array
     {
@@ -38,7 +50,7 @@ final class UserCollection implements JsonSerializable
     /**
      * Create a UserCollection from an array.
      *
-     * @param array $data
+     * @param UserCollectionArray $data
      */
     public static function fromArray(array $data): self
     {
@@ -56,7 +68,7 @@ final class UserCollection implements JsonSerializable
         );
     }
 
-    /** @return array */
+    /** @return UserCollectionArray */
     public function jsonSerialize(): array
     {
         return $this->toArray();
