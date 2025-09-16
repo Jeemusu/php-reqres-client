@@ -350,7 +350,9 @@ composer stan
 
 ## Todo
 
-- Basic unit test coverate
+- ~~Basic unit test coverate~~
 - Clear phpstan baseline
 - Integration tests
 - Add Validation for input parameters passed to the createUser method
+- Improve unit test coverage
+- PSR-7 Stream and URI support for improved uri concatenation & body writing
