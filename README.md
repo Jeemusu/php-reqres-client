@@ -295,7 +295,7 @@ $user->avatar;      // string
 
 // Methods
 $user->toArray();   // Convert to array
-json_encode($user); // JSON serializable
+json_encode($user); // JSON serialisable
 ```
 
 ### UserCollection
@@ -312,7 +312,7 @@ $collection->users;       // array<User> - Array of User objects
 
 // Methods
 $collection->toArray();   // Convert to array
-json_encode($collection); // JSON serializable
+json_encode($collection); // JSON serialisable
 ```
 
 ## Development
@@ -332,9 +332,8 @@ composer stan
 ## Requirements
 
 - PHP 8.4+
-- Guzzle HTTP 7.10+
-- PSR-18 compatible HTTP client
-
+- PSR-18 compatible HTTP Client Interface
+- PSR-17 compatible HTTP Factory
 
 ## Changelog
 

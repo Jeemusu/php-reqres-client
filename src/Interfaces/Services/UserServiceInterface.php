@@ -27,9 +27,9 @@ interface UserServiceInterface
      * Retrieves a paginated list of users.
      *
      * @param int $page The page number to retrieve.
+     * @param int $perPage The number of users per page.
      * @throws NetworkException If a network error prevents the request from completing.
      * @throws ApiException For any other API-related errors.
-     * @param int $perPage The number of users per page.
      */
     public function getPaginatedUsers(int $page = 1, int $perPage = 6): UserCollection;
 
